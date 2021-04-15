@@ -21,4 +21,8 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Run rails db:migrate
+
+* Run rails s
+
+The project should be working fine
