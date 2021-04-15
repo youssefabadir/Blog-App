@@ -1,0 +1,26 @@
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= comment.user.email %>:</strong> <small><%= time_ago_in_words(comment.created_at) %></small>
+          <br/>
+          <strong><%= comment.comment %></strong>
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <% if comment_author(comment)%>
+          <div class="level-left">
+            <a class="level-item">
+              <%= link_to 'Edit', edit_post_comment_path(comment.post, comment), class: "button" %>
+            </a>
+            <a class="level-item">
+              <%= link_to 'Delete', [comment.post, comment], method: :delete, data: {confirm: "Are you sure ?" }, class: "button" %>
+            </a>
+          </div>
+        <% end %>
+      </nav>
+    </div>
+  </article>
+</div>
+

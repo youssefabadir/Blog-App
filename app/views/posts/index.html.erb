@@ -1,0 +1,19 @@
+<h1>Posts</h1>
+<div class="album text-muted">
+   <div class="container">
+      <div class="row">
+         <% @posts.each do |post| %>
+         <div class="card">
+            <strong class="card-text">Title: <%= link_to post.title, post %></strong>
+            <p class="card-text"><strong>By: </strong><%= post.author %></p>
+            <p class="card-text"><strong>Content: </strong><%= post.body %></p>
+            <p class="card-text"><strong>Tags: </strong><%= post.tags %></p>
+         </div>
+         <% end %>
+      </div>  
+   </div>
+</div>
+
+<br>
+
+<%= link_to 'New Post', new_post_path, class: "btn btn-secondary" %>

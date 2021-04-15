@@ -1,0 +1,47 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if post_author(@post) %>
+  <div class="field form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control", placeholder: "Title" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :body %>
+    <%= form.text_field :body, class: "form-control", placeholder: "Body" %>
+  </div>
+
+  <div class="field form-group">
+    <% form.label :author %>
+    <%= form.text_field :author, class: "form-control", value: current_user.email, type: :hidden %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :tags %>
+    <%= form.text_field :tags, class: "form-control", placeholder: "Tags", :required => true %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_field :user_id, id: :posts_user_id, class: "form-control", value: current_user.id, type: :hidden %>
+  </div>
+  <% else %>
+    <div class="field form-group">
+    <%= form.label :tags %>
+    <%= form.text_field :tags, class: "form-control", placeholder: "Tags", :required => true %>
+  </div>
+  <% end %>
+  <br/>
+  <div class="actions">
+    <%= form.submit class:'btn btn-secondary'%>
+  </div>
+<% end %>
